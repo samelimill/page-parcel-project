@@ -1,14 +1,13 @@
-const express = require("express");
-const { ApolloServer } = require("@apollo/server");
-const { expressMiddleware } = require("@apollo/server/express4");
-const { resolve, path } = require("path");
-const env = require("dotenv").config({ path: "./.env" });
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY, {
-  apiVersion: "2023-10-16",
-});
+const express = require('express');
+const { ApolloServer } = require('@apollo/server');
+const { expressMiddleware } = require('@apollo/server/express4');
+const path = require('path');
+const cors = require('cors');
+const dotenv = require('dotenv');
+dotenv.config(); //this is to use the .env file
 
-const { typeDefs, resolvers } = require("./schemas");
-const db = require("./config/connection");
+const { typeDefs, resolvers } = require('./schemas');
+const db = require('./config/connection');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -22,18 +21,57 @@ const startApolloServer = async () => {
 
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
+  app.use(cors());
 
-  if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join(__dirname, "../client/dist")));
+  const stripe = require('stripe')("sk_test_51OV7AoDjlm3PLyEybK2VVx6yUi2qb24uZ8jUOZKVKk6xfOXXo53oftugvY9vv2x9ijJ7w4WeF4nuEiyFZo0b1C0e00jqeHqiLE");
+  console.log('Stripe API key:', process.env.STRIPE_KEY);
 
-    app.get("*", (req, res) => {
-      res.sendFile(path.join(__dirname, "../client/dist/index.html"));
+  const storeItems = new Map([
+    [1, { priceInCents: 1000, name: "stripe kills" }],
+    [2, { priceInCents: 2000, name: "learning stripe" }],
+  ])
+  app.post('/create-checkout-session', async (req, res) => {
+    try {
+      const session = await stripe.checkout.sessions.create({
+        payment_method_types: ['card'],
+        mode: 'payment',
+        line_items: req.body.items.map((item) => {
+          const storeItem = storeItems.get(item.id);
+          return {
+            price_data: {
+              currency: 'usd',
+              product_data: {
+                name: storeItem.name,
+              },
+              unit_amount: storeItem.priceInCents,
+            },
+            quantity: item.quantity,
+          };
+        }),
+        success_url: `http://localhost:3000/success.html`,
+        cancel_url: `http://localhost:3000/cancel.html`,
+      });
+
+      res.json({ url: session.url });
+    } catch (e) {
+      res.status(500).json({ error: e.message });
+    }
+  });
+  
+  
+  if (process.env.NODE_ENV === 'production') {
+    //changed to src from dist to see if stripe works
+    app.use(express.static(path.join(__dirname, '../client/dist')));
+    
+    app.get('*', (req, res) => {
+      res.sendFile(path.join(__dirname, '../client/dist/index.html'));
     });
   }
 
-  app.use("/graphql", expressMiddleware(server));
+  
+  app.use('/graphql', expressMiddleware(server));
 
-  db.once("open", () => {
+  db.once('open', () => {
     app.listen(PORT, () => {
       console.log(`API server running on port ${PORT}!`);
       console.log(`Use GraphQL at http://localhost:${PORT}/graphql`);
