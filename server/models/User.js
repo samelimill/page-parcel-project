@@ -42,7 +42,7 @@ const userSchema = new Schema({
     maxlength: 2,
   },
   zipCode: {
-    type: String,
+    type: Number,
     required: true,
     trim: true,
     match: /^\d+$/,
