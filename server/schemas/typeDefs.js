@@ -31,16 +31,19 @@ const typeDefs = `
         order(_id: ID!): Order
     }
 
-  type Mutation {
-    addUser(firstName: String!, lastName: String!, email: String!, password: String!, street: String!, city: String!, state: String!, zipCode: Int!): Auth
-    
-    addOrder(products: [ID]!): Order}
- 
-    updateUser(firstName: String!, lastName: String!, email: String!, password: String!, street: String!, city: String!, state: String!, zipCode: Int!): User
-    
-    updateProduct(_id: ID!, name: String! description: String!, price: Int!): Product
-    
-    login(email: String!, password: String!): Auth
+    type Mutation {
+        addUser(firstName: String!, lastName: String!, email: String!, password: String!, street: String!, city: String!, state: String!, zipCode: Int!): Auth
+        addOrder(products: [ID]!): Order
+        updateUser(firstName: String!, lastName: String!, email: String!, password: String!, street: String!, city: String!, state: String!, zipCode: Int!): User
+        updateProduct(_id: ID!, name: String!, description: String!, price: Int!): Product
+        login(email: String!, password: String!): Auth
+    }
+
+    type Auth {
+        token: String
+        user: User
+      }
+      
 `;
 
 module.exports = typeDefs;
