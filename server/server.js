@@ -23,8 +23,7 @@ const startApolloServer = async () => {
   app.use(express.json());
   app.use(cors());
 
-  const stripe = require('stripe')("sk_test_51OV7AoDjlm3PLyEybK2VVx6yUi2qb24uZ8jUOZKVKk6xfOXXo53oftugvY9vv2x9ijJ7w4WeF4nuEiyFZo0b1C0e00jqeHqiLE");
-  console.log('Stripe API key:', process.env.STRIPE_KEY);
+  const stripe = require('stripe')(process.env.STRIPE_KEY);
 
   const storeItems = new Map([
     [1, { priceInCents: 1000, name: "stripe kills" }],
@@ -48,8 +47,8 @@ const startApolloServer = async () => {
             quantity: item.quantity,
           };
         }),
-        success_url: `http://localhost:3000/success.html`,
-        cancel_url: `http://localhost:3000/cancel.html`,
+        success_url: `${process.env.URL}/success.html`,
+        cancel_url: `${process.env.URL}/cancel.html`,
       });
 
       res.json({ url: session.url });
