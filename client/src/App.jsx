@@ -1,14 +1,22 @@
-// Bringing in the required import from 'react-router-dom'
-import { Outlet } from 'react-router-dom';
+import Navbar from '../src/components/Home/Navbar';
+import './App.css';
+import Home from '../src/pages/HomePage';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 
 function App() {
-  // The Outlet component will conditionally swap between the different pages according to the URL
   return (
     <>
-      <Outlet />
+      <Router>
+        <Navbar />
+        <Routes>
+        <Route path='/' exact element={ <Home />}></Route>
+          </Routes>
+      </Router>
     </>
   );
 }
+
 
 export default App;
 
