@@ -1,5 +1,14 @@
+import Jumbotron from '../components/Jumbotron';
+
 function Failure(props) {
-    return <h1>Uh oh . . . something seems wrong. Try again!</h1>;
+    return (
+        <div>
+          <Jumbotron>
+            <h1>🚫 Error!</h1>
+            <h2>Error loading page!</h2>
+          </Jumbotron>
+        </div>
+      );
 }
 
 export default Failure;

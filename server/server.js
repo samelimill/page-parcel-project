@@ -1,13 +1,13 @@
-const express = require('express');
-const { ApolloServer } = require('@apollo/server');
-const { expressMiddleware } = require('@apollo/server/express4');
-const path = require('path');
-const cors = require('cors');
-const dotenv = require('dotenv');
+const express = require("express");
+const { ApolloServer } = require("@apollo/server");
+const { expressMiddleware } = require("@apollo/server/express4");
+const path = require("path");
+const cors = require("cors");
+const dotenv = require("dotenv");
 dotenv.config(); //this is to use the .env file
 
-const { typeDefs, resolvers } = require('./schemas');
-const db = require('./config/connection');
+const { typeDefs, resolvers } = require("./schemas");
+const db = require("./config/connection");
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -23,22 +23,22 @@ const startApolloServer = async () => {
   app.use(express.json());
   app.use(cors());
 
-  const stripe = require('stripe')(process.env.STRIPE_KEY);
+  const stripe = require("stripe")(process.env.STRIPE_KEY);
 
   const storeItems = new Map([
     [1, { priceInCents: 1000, name: "stripe kills" }],
     [2, { priceInCents: 2000, name: "learning stripe" }],
-  ])
-  app.post('/create-checkout-session', async (req, res) => {
+  ]);
+  app.post("/create-checkout-session", async (req, res) => {
     try {
       const session = await stripe.checkout.sessions.create({
-        payment_method_types: ['card'],
-        mode: 'payment',
+        payment_method_types: ["card"],
+        mode: "payment",
         line_items: req.body.items.map((item) => {
           const storeItem = storeItems.get(item.id);
           return {
             price_data: {
-              currency: 'usd',
+              currency: "usd",
               product_data: {
                 name: storeItem.name,
               },
@@ -56,21 +56,19 @@ const startApolloServer = async () => {
       res.status(500).json({ error: e.message });
     }
   });
-  
-  
-  if (process.env.NODE_ENV === 'production') {
+
+  if (process.env.NODE_ENV === "production") {
     //changed to src from dist to see if stripe works
-    app.use(express.static(path.join(__dirname, '../client/dist')));
-    
-    app.get('*', (req, res) => {
-      res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+    app.use(express.static(path.join(__dirname, "../client/dist")));
+
+    app.get("*", (req, res) => {
+      res.sendFile(path.join(__dirname, "../client/dist/index.html"));
     });
   }
 
-  
-  app.use('/graphql', expressMiddleware(server));
+  app.use("/graphql", expressMiddleware(server));
 
-  db.once('open', () => {
+  db.once("open", () => {
     app.listen(PORT, () => {
       console.log(`API server running on port ${PORT}!`);
       console.log(`Use GraphQL at http://localhost:${PORT}/graphql`);

@@ -9,7 +9,7 @@ import { useStoreContext } from '../../utils/GlobalState';
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
 import './style.css';
 
-const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+const stripePromise = loadStripe(process.env.STRIPE_PUBLISHABLE_KEY);
 
 const Cart = () => {
   const [state, dispatch] = useStoreContext();
@@ -95,9 +95,9 @@ const Cart = () => {
       ) : (
         <h3>
           <span role="img" aria-label="shocked">
-            😱
+            🤷‍♀️🤷
           </span>
-          You haven't added anything to your cart yet!
+          There's nothing here?
         </h3>
       )}
     </div>

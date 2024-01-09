@@ -114,4 +114,4 @@ function CartPage() {
   );
 }
 
-export default Detail;
+export default CartPage;
