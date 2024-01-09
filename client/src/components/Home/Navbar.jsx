@@ -2,8 +2,11 @@ import  { useState, useEffect } from 'react';
 import { Button } from './Button';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
-import { GiHamburgerMenu } from "react-icons/gi";
-import { FaBattleNet } from "react-icons/fa6";
+import { IoMenuSharp } from "react-icons/io5";
+
+import { AiOutlineMenuFold } from "react-icons/ai";
+import { SiBookstack } from "react-icons/si";
+
 
 function Navbar() {
   const [click, setClick] = useState(false);
@@ -31,11 +34,11 @@ function Navbar() {
       <nav className='navbar'>
         <div className='navbar-container'>
           <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
-            Page Parcel
-            {/* <i class='fab fa-typo3' /> */}
+            PAGE PARCEL <SiBookstack />
           </Link>
           <div className='menu-icon' onClick={handleClick}>
-            {!click ?  <GiHamburgerMenu /> : <FaBattleNet />}
+            {!click ?  <IoMenuSharp />: <AiOutlineMenuFold />
+}
           
           </div>
           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
