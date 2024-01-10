@@ -45,7 +45,8 @@
   }
   
   .cards__item__link {
-    background-color: white;
+    position: relative;
+    background: linear-gradient(45deg, #8e44ad, #e74c3c, #3498db); /* Purple, Orange, Red, Blue gradient */
     display: flex;
     flex-flow: column;
     width: 100%;
@@ -55,7 +56,11 @@
     border-radius: 10px;
     overflow: hidden;
     text-decoration: none;
+    transition: transform 0.3s ease-out;
+    transform-style: preserve-3d;
+    perspective: 1000px;
   }
+  
   
   .cards__item__pic-wrap {
     position: relative;
@@ -76,7 +81,7 @@
     margin-left: 10px;
     padding: 6px 8px;
     max-width: calc((100%) - 60px);
-    font-size: 12px;
+    font-size: 15px;
     font-weight: 700;
     color: #fff;
     background-color: #e87a00;
@@ -108,8 +113,9 @@
   
   .cards__item__text {
     color: black;
-    font-size: 18px;
-    line-height: 24px;
+    font-size:16px;
+    line-height: 20px;
+    padding-bottom: 15px;
   }
   
   @media only screen and (min-width: 1200px) {

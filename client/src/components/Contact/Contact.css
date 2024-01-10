@@ -23,6 +23,7 @@ video {
   }
   
   h2 {
+
     font-size: 50px;
     color: white;
     text-shadow: 
@@ -37,9 +38,10 @@ video {
   
   
   .--form-control {
-    background-color: #fff;
+    background: linear-gradient(45deg, #8e44ad, #e74c3c, #3498db); /* Purple, Orange, Red, Blue gradient */
+
     border-radius: 8px;
-    border-bottom: 10px solid #ccc;
+    
     padding: 30px; /* Increase padding for a larger card */
     box-shadow: 0 2px 50px rgba(0, 0, 0, 0.1);  }
   
@@ -49,9 +51,9 @@ video {
       padding: 15px; /* Adjusted padding for input fields */
       margin-bottom: 20px; /* Increased margin for input fields */
       border: none;
-      border-bottom: 10px solid #ccc; /* Bottom border for a 3D effect */
+      border-bottom: 7px solid #ccc; /* Bottom border for a 3D effect */
       border-radius: 6px; /* Slightly rounded corners */
-      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
+      box-shadow: 0 2px 30px rgba(0, 0, 0, 1); /* Box shadow for depth */
     }
     
     input:focus,
@@ -103,7 +105,7 @@ video {
   top: 180%;
   width: 160%;
   height: 190%;
-  background-color: #009087;
+  background-color:#3498db;
   border-radius: 50%;
   display: block;
   transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
@@ -112,18 +114,18 @@ video {
 
   button:hover{
     color: #ffffff;
-  border: 1px solid #009087;
+  border: 1px solid #3498db;
   }
 
   button:hover:before{
     top: -35%;
-  background-color: #009087;
+  background-color: #3498db;
   transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
   }
 
   button:hover:after{
     top: -45%;
-    background-color: #009087;
+    background-color: #3498db;
     transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
   }
   /* Center the form vertically and horizontally */
