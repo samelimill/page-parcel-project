@@ -1,4 +1,3 @@
-
 import Navbar from '../src/components/Home/Navbar';
 import './App.css';
 import Home from '../src/pages/HomePage';
@@ -10,6 +9,7 @@ import Signup from './pages/Signup';
 
 
 function App() {
+ 
   return (
     <>
       <Router>

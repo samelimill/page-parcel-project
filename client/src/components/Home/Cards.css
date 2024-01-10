@@ -7,6 +7,14 @@
     text-align: center;
     color: white;
     letter-spacing: 5px;
+    text-shadow: 
+      0 0 10px rgba(255, 255, 255, 0.9), /* Bright white shadow for a glow effect */
+      0 0 20px rgba(255, 255, 255, 0.7), /* Bright white shadow for a glow effect */
+      0 0 30px rgba(255, 255, 255, 0.5); /* Bright white shadow for a glow effect */
+    font-family: 'Arial', sans-serif; /* Change font family to a sans-serif font */
+    font-weight: bold; /* Make the text bold for emphasis */
+    letter-spacing: 2px; /* Add letter spacing for a more stylish look */
+    transition: text-shadow 0.3s ease-in-out; /* Add transition for a smooth effect */
   }
   
   .cards__container {
@@ -37,7 +45,7 @@
   }
   
   .cards__item__link {
-    background-color: #d89c60;
+    background-color: white;
     display: flex;
     flex-flow: column;
     width: 100%;
