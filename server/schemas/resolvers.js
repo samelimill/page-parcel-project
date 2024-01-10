@@ -85,6 +85,7 @@ const resolvers = {
       const token = signToken(profile);
       return { token, profile };
     },
+
     addOrder: async (parent, { products }, context) => {
       if (context.user) {
         const order = new Order({ products });

@@ -1,0 +1,81 @@
+video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: -1;
+  }
+
+.container {
+    max-width: 600px;
+    margin:  -60px auto;
+    height: 100vh;
+    /* width: 100%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+    object-fit: contain;
+  }
+  
+  section {
+    padding-top: 40px;
+  }
+  
+  .about {
+    font-size: 50px;
+    color: rgb(255, 255, 255);
+    text-align: center; /* Center text within the element */
+    text-shadow: 
+      0 0 10px rgba(255, 255, 255, 0.9), /* Bright white shadow for a glow effect */
+      0 0 20px rgba(255, 255, 255, 0.7), /* Bright white shadow for a glow effect */
+      0 0 30px rgba(255, 255, 255, 0.5); /* Bright white shadow for a glow effect */
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    letter-spacing: 2px;
+    transition: text-shadow 0.3s ease-in-out;
+  }
+
+  /* Center the form vertically and horizontally */
+  .--flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* Additional styles for a card-like appearance */
+  .--card {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5); /* More pronounced box shadow for a 3D effect */
+}
+  
+.user-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.user-card {
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: white;
+}
+
+.user-card img {
+  width: 100%;
+  max-width: 150px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .container {
+      max-width: 100%;
+      padding: 0 20px;
+    }
+  }
+  
