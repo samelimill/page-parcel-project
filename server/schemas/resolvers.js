@@ -85,27 +85,28 @@ const resolvers = {
         email,
         password,
       });
-      console.log(user);
+      // console.log(user);
       const token = signToken(user);
 
       return { token, user };
     },
 
     login: async (parent, { email, password }) => {
-      const profile = await User.findOne({ email });
+      const user = await User.findOne({ email });
 
-      if (!profile) {
+      if (!user) {
         throw AuthenticationError;
       }
 
-      const correctPw = await profile.isCorrectPassword(password);
+      const correctPw = await user.isCorrectPassword(password);
 
       if (!correctPw) {
         throw AuthenticationError;
       }
 
-      const token = signToken(profile);
-      return { token, profile };
+      // console.log(user);
+      const token = signToken(user);
+      return { token, user };
     },
 
     addOrder: async (parent, { products }, context) => {
