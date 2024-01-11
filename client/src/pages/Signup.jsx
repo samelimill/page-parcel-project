@@ -1,49 +1,53 @@
+import { useMutation } from '@apollo/client';
+import { ADD_USER } from '../utils/mutations';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
-import Auth from '../utils/auth';
-import { ADD_USER } from '../utils/mutations';
 
-function Signup() {
-  const [formState, setFormState] = useState({ email: '', password: '' });
-  const [addUser] = useMutation(ADD_USER);
+const Signup = () => {
+  const [error, setError] = useState(false); // Define the 'error' state variable
 
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-    const mutationResponse = await addUser({
-      variables: {
-        email: formState.email,
-        password: formState.password,
-        firstName: formState.firstName,
-        lastName: formState.lastName,
-      },
-    });
-    const token = mutationResponse.data.addUser.token;
-    Auth.login(token);
+  const [addUser] = useMutation(ADD_USER); // Use the ADD_USER mutation
+
+  const handleSignup = async (event) => {
+    event.preventDefault(); // Prevent the default form submission behavior
+    const firstName = event.target.firstName.value; // Get the entered first name value from the form
+    const lastName = event.target.lastName.value; // Get the entered last name value from the form
+    const email = event.target.email.value; // Get the entered email value from the form
+    const password = event.target.password.value; // Get the entered password value from the form
+
+    // Basic validation (you might want to implement more thorough validation)
+    if (email && password) {
+      try {
+        // Call the addUser mutation to add the user data to the database
+        await addUser({
+          variables: { firstName, lastName, email, password },
+        });
+
+        // Successful signup logic
+        console.log('Signup successful!');
+      } catch (error) {
+        console.error('Error signing up:', error);
+      }
+    } else {
+      // Set the error state to true if signup fails due to missing email or password
+      setError(true);
+    }
   };
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormState({
-      ...formState,
-      [name]: value,
-    });
-  };
+  // Rest of the code...
 
   return (
     <div className="container my-1">
       <Link to="/login">← Go to Login</Link>
-
       <h2>Signup</h2>
-      <form onSubmit={handleFormSubmit}>
+      <form onSubmit={handleSignup}>
         <div className="flex-row space-between my-2">
           <label htmlFor="firstName">First Name:</label>
           <input
             placeholder="First"
             name="firstName"
-            type="firstName"
+            type="text"
             id="firstName"
-            onChange={handleChange}
           />
         </div>
         <div className="flex-row space-between my-2">
@@ -51,9 +55,8 @@ function Signup() {
           <input
             placeholder="Last"
             name="lastName"
-            type="lastName"
+            type="text"
             id="lastName"
-            onChange={handleChange}
           />
         </div>
         <div className="flex-row space-between my-2">
@@ -63,7 +66,6 @@ function Signup() {
             name="email"
             type="email"
             id="email"
-            onChange={handleChange}
           />
         </div>
         <div className="flex-row space-between my-2">
@@ -73,15 +75,19 @@ function Signup() {
             name="password"
             type="password"
             id="pwd"
-            onChange={handleChange}
           />
         </div>
+        {error && (
+          <div>
+            <p className="error-text">Please provide an email and password</p>
+          </div>
+        )}
         <div className="flex-row flex-end">
           <button type="submit">Submit</button>
         </div>
       </form>
     </div>
   );
-}
+};
 
 export default Signup;

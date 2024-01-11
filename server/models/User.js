@@ -24,31 +24,6 @@ const userSchema = new Schema({
     required: true,
     minlength: 10,
   },
-  street: {
-    type: String,
-    required: true,
-    trim: true,
-  },
-  city: {
-    type: String,
-    required: true,
-    trim: true,
-  },
-  state: {
-    type: String,
-    required: true,
-    trim: true,
-    minlength: 2,
-    maxlength: 2,
-  },
-  zipCode: {
-    type: Number,
-    required: true,
-    trim: true,
-    match: /^\d+$/,
-    minlength: 5,
-    maxlength: 5,
-  },
 });
 
 // set up pre-save middleware to create password

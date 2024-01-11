@@ -4,6 +4,18 @@ const stripe = require("stripe")("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
 
 const resolvers = {
   Query: {
+    //finds all users in database
+    users: async (parent, args) => {
+      const user = await User.find();
+      return user;
+    },
+
+    //finds a single user by id
+    user: async (parent, { _id }) => {
+      const singleUser = await User.findById(_id);
+      return singleUser;
+    },
+
     products: async (parent, { name }) => {
       const params = {};
       if (name) {
@@ -16,61 +28,71 @@ const resolvers = {
       return await Product.findById(_id).populate("products");
     },
 
-    orders: async (parent, args, context) => {
-      if (context.user) {
-        const user = await User.findById(context.user._id).populate({
-          path: "orders.products",
-        });
+    // orders: async (parent, args, context) => {
+    //   if (context.user) {
+    //     const user = await User.findById(context.user._id).populate({
+    //       path: "orders.products",
+    //     });
 
-        user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
+    //     user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
 
-        return user;
-      }
+    //     return user;
+    //   }
 
-      throw AuthenticationError;
-    },
+    //   throw AuthenticationError;
+    // },
 
-    checkout: async (parent, args, context) => {
-      const url = new URL(context.headers.referer).origin;
+    // checkout: async (parent, args, context) => {
+    //   const url = new URL(context.headers.referer).origin;
 
-      await Order.create({ products: args.products.map(({ _id }) => _id) });
-      const line_items = [];
+    //   await Order.create({ products: args.products.map(({ _id }) => _id) });
+    //   const line_items = [];
 
-      for (const product of args.products) {
-        line_items.push({
-          price_data: {
-            currency: "usd",
-            product_data: {
-              name: product.name,
-              description: product.description,
-            },
-            unit_amount: product.price * 100,
-          },
-          quantity: product.purchaseQuantity,
-        });
-      }
+    //   for (const product of args.products) {
+    //     line_items.push({
+    //       price_data: {
+    //         currency: "usd",
+    //         product_data: {
+    //           name: product.name,
+    //           description: product.description,
+    //         },
+    //         unit_amount: product.price * 100,
+    //       },
+    //       quantity: product.purchaseQuantity,
+    //     });
+    //   }
 
-      const session = await stripe.checkout.sessions.create({
-        payment_method_types: ["card"],
-        line_items,
-        mode: "payment",
-        success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: `${url}/`,
-      });
+    //     const session = await stripe.checkout.sessions.create({
+    //       payment_method_types: ["card"],
+    //       line_items,
+    //       mode: "payment",
+    //       success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+    //       cancel_url: `${url}/`,
+    //     });
 
-      return { session: session.id };
-    },
+    //     return { session: session.id };
+    //   },
   },
 
   Mutation: {
-    addUser: async (parent, { name, email, password }) => {
-      const profile = await Profile.create({ name, email, password });
-      const token = signToken(profile);
+    addUser: async (
+      parent,
+      { firstName, lastName, email, password}
+    ) => {
+      const user = await User.create({
+        firstName,
+        lastName,
+        email,
+        password,
+      });
+      console.log(user);
+      const token = signToken(user);
 
-      return { token, profile };
+      return { token, user };
     },
+
     login: async (parent, { email, password }) => {
-      const profile = await Profile.findOne({ email });
+      const profile = await User.findOne({ email });
 
       if (!profile) {
         throw AuthenticationError;
@@ -99,6 +121,7 @@ const resolvers = {
 
       throw AuthenticationError;
     },
+
     updateUser: async (parent, args, context) => {
       if (context.user) {
         return await User.findByIdAndUpdate(context.user._id, args, {
@@ -119,3 +142,5 @@ const resolvers = {
     },
   },
 };
+
+module.exports = resolvers;
