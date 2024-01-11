@@ -18,6 +18,8 @@ function Navbar() {
   const showButton = () => {
     if (window.innerWidth <= 960) {
       setButton(false);
+    } else if (Auth.loggedIn()) {
+      setButton(false);
     } else {
       setButton(true);
     }
@@ -25,7 +27,9 @@ function Navbar() {
 
   function showNavigation() {
     if (Auth.loggedIn()) {
-      return (<li className='nav-item'>
+      return (
+        <>
+      <li className='nav-item'>
       <Link
           to='/account'
           className='nav-links'
@@ -33,9 +37,21 @@ function Navbar() {
         >
           Account
         </Link>
-        </li>)
+        </li>
+      <li className='nav-item'>
+      <Link
+          to='/logout'
+          className='nav-links'
+          onClick={closeMobileMenu}
+        >
+          Log Out
+        </Link>
+        </li>  
+        </>)
     } else {
-      return (<li className='nav-item'>
+      return (
+      <>
+      <li className='nav-item'>
       <Link
           to='/login'
           className='nav-links'
@@ -43,7 +59,18 @@ function Navbar() {
         >
           Log In
         </Link>
-        </li>)
+        </li>
+        <li className='nav-item'>
+      <Link
+          to='/signup'
+          className='nav-links'
+          onClick={closeMobileMenu}
+        >
+          Sign Up
+        </Link>
+        </li>   
+      </>
+        )
     }
     }
   useEffect(() => {
@@ -91,7 +118,6 @@ function Navbar() {
             {showNavigation()}
 
           </ul>
-          {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}
         </div>
       </nav>
     </>
