@@ -3,7 +3,7 @@ import { Button } from './Button';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import { IoMenuSharp } from "react-icons/io5";
-
+import Auth from '../../utils/auth';
 import { AiOutlineMenuFold } from "react-icons/ai";
 import { SiBookstack } from "react-icons/si";
 
@@ -23,6 +23,29 @@ function Navbar() {
     }
   };
 
+  function showNavigation() {
+    if (Auth.loggedIn()) {
+      return (<li className='nav-item'>
+      <Link
+          to='/account'
+          className='nav-links'
+          onClick={closeMobileMenu}
+        >
+          Account
+        </Link>
+        </li>)
+    } else {
+      return (<li className='nav-item'>
+      <Link
+          to='/login'
+          className='nav-links'
+          onClick={closeMobileMenu}
+        >
+          Log In
+        </Link>
+        </li>)
+    }
+    }
   useEffect(() => {
     showButton();
   }, []);
@@ -65,25 +88,8 @@ function Navbar() {
                 About us
               </Link>
             </li>
-            <li className='nav-item'>
-            <Link
-                to='/cart'
-                className='nav-links'
-                onClick={closeMobileMenu}
-              >
-                Cart
-              </Link>
-              </li>
-            <li>
-              <Link
-                to='/login'
-                className='nav-links-mobile'
-                onClick={closeMobileMenu}
-              >
-                Sign Up
-              </Link>
-            </li>
-            
+            {showNavigation()}
+
           </ul>
           {button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}
         </div>

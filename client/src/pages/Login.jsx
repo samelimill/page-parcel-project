@@ -9,6 +9,7 @@ const Login = () => {
     const email = event.target.email.value; // Get the entered email value from the form
     const password = event.target.password.value; // Get the entered password value from the form
     
+    console.log(email + password);
     // Basic validation (you might want to implement more thorough validation)
     if (email === 'test@test.com' && password === 'password') {
       // Successful login logic (replace this with your actual login logic)
