@@ -18,29 +18,26 @@ const typeDefs = `
         lastName: String
         email: String
         password: String
-        street: String
-        city: String
-        state : String
-        zipCode: Int
     }
 
     type Query {
         products(name: String): [Product]
         product(_id: ID!): Product
-        user: User
+        user(_id: ID!): User
+        users: [User]
         order(_id: ID!): Order
     }
 
     type Mutation {
-        addUser(firstName: String!, lastName: String!, email: String!, password: String!, street: String!, city: String!, state: String!, zipCode: Int!): Auth
+        addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
         addOrder(products: [ID]!): Order
-        updateUser(firstName: String!, lastName: String!, email: String!, password: String!, street: String!, city: String!, state: String!, zipCode: Int!): User
+        updateUser(firstName: String!, lastName: String!, email: String!, password: String!): User
         updateProduct(_id: ID!, name: String!, description: String!, price: Int!): Product
         login(email: String!, password: String!): Auth
     }
 
     type Auth {
-        token: String
+        token: ID!
         user: User
       }
       
