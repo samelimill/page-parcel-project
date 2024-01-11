@@ -4,6 +4,7 @@ import Home from '../src/pages/HomePage';
 import Contact from '../src/components/Contact/Contact';
 import About from '../src/components/About/About';
 import Login from './pages/Login';
+import Account from './pages/AccountPage';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Signup from './pages/Signup';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
@@ -29,6 +30,7 @@ function App() {
         <Route path='/about' exact element={ <About />}></Route>
         <Route path='/login' exact element={ <Login />}></Route>
         <Route path='/signup' exact element={ <Signup />}></Route>
+        <Route path='/account' exact element={ <Account />}></Route>
           </Routes>
       </Router>
     </>
