@@ -11,7 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@apollo/client": "^3.7.15",
+    "@apollo/client": "^3.8.8",
     "@emailjs/browser": "^3.11.0",
     "@stripe/stripe-js": "^1.54.0",
     "@testing-library/react": "^14.0.0",
