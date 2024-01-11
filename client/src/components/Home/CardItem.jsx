@@ -15,7 +15,7 @@ function CardItem(props) {
           </figure>
           <div className='cards__item__info'>
             <h5 className='cards__item__text'>{props.text}</h5>
-            <button className='cards__item__btn'>Add To Cart</button>
+            <button className='cards__item__btn'>Subscribe</button>
           </div>
         </Link>
       </li>
