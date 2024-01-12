@@ -9,7 +9,7 @@ function Cards() {
       <div className='cards__container'>
         <div className='cards__wrapper'>
           <ul className='cards__items'>
-            <CardItem
+          <CardItem
               src='/assets/images/booksbed.jpg'
               text='Discover a love that defies time, where every glance speaks volumes and every touch ignites a spark - your next romantic escape awaits.'
               label='Romance'
@@ -33,7 +33,7 @@ function Cards() {
               src='/assets/images/fantasy.jpg'
               text='Enter a world where magic reigns, mythical creatures roam, and extraordinary adventures await in the enchanting embrace of fantasy.'
               label='Fantasy'
-              path='https://buy.stripe.com/test_9AQ3fX7BNgjMecw003'
+              path='https://buy.stripe.com/test_eVabMtbS39Vo5G0dQU'
             />
             <CardItem
               src='/assets/images/stacks.jpg'
