@@ -12,6 +12,11 @@ function Navbar() {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
 
+  //handles the logout function for the logout link
+  const handleLogout = () => {
+    Auth.logout();
+  };
+
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
 
@@ -40,9 +45,9 @@ function Navbar() {
         </li>
       <li className='nav-item'>
       <Link
-          to='/logout'
+          to='/'
           className='nav-links'
-          onClick={closeMobileMenu}
+          onClick={handleLogout}
         >
           Log Out
         </Link>
