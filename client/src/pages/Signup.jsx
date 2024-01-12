@@ -38,6 +38,7 @@ const Signup = () => {
 
   return (
     <div className="container my-1">
+       <video src="/assets/videos/pexels_videos_2421545 (2160p).mp4" autoPlay loop muted />
       <Link to="/login">← Go to Login</Link>
       <h2>Signup</h2>
       <form onSubmit={handleSignup}>
