@@ -31,6 +31,7 @@ function Login(props) {
 
   return (
     <div className="container my-1">
+       <video src="/assets/videos/pexels_videos_2421545 (2160p).mp4" autoPlay loop muted />
       <Link to="/signup">← Go to Signup</Link>
 
       <h2>Login</h2>
