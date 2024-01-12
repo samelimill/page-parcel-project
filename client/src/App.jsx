@@ -10,7 +10,7 @@ import Signup from './pages/Signup';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
 const client = new ApolloClient({
-  uri: 'http://localhost:3001/graphql', // Replace with your GraphQL endpoint
+  uri: 'http://localhost:3001/graphql', // placed the correct graphql endpoint here
   cache: new InMemoryCache(),
 });
 
@@ -31,7 +31,7 @@ function App() {
         <Route path='/login' exact element={ <Login />}></Route>
         <Route path='/signup' exact element={ <Signup />}></Route>
         <Route path='/account' exact element={ <Account />}></Route>
-          </Routes>
+        </Routes>
       </Router>
     </>
     </ApolloProvider>
