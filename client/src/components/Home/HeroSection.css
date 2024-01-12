@@ -22,6 +22,7 @@ video {
   color: #fff;
   font-size: 80px;
   margin-top: -100px;
+  padding: 10px;
   text-shadow: 
       0 0 10px rgba(255, 255, 255, 0.9), /* Bright white shadow for a glow effect */
       0 0 20px rgba(255, 255, 255, 0.7), /* Bright white shadow for a glow effect */
@@ -34,6 +35,18 @@ video {
 
 .hero-container > p {
   margin-top: 8px;
+  color: #fff;
+  font-size: 32px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+}
+
+.copy-container {
+  margin: 20px;
+}
+
+.copy-container > p {
+  padding: 10px;
   color: #fff;
   font-size: 32px;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
