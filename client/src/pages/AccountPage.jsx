@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-
+import Account from '../components/Account'
 import { useQuery } from '@apollo/client';
 import { QUERY_USER } from '../utils/queries';
 
@@ -15,8 +15,8 @@ function AccountPage() {
     <>
       <div>
         <Link to="/">← Back to Products</Link>
-
-        {user ? (
+        <Account />
+        {/* {user ? (
           <>
             <h2>
               Order History for {user.firstName} {user.lastName}
@@ -41,7 +41,7 @@ function AccountPage() {
               </div>
             ))}
           </>
-        ) : null}
+        ) : null} */}
       </div>
     </>
   );
