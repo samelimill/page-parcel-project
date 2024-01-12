@@ -5,7 +5,6 @@ video {
   position: fixed;
   z-index: -1;
 }
-
 .hero-container {
   /* background: url('/images/img-home.jpg') center center/cover no-repeat; */
   height: 100vh;
@@ -17,17 +16,12 @@ video {
   box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
   object-fit: contain;
 }
-
 .hero-container > h1 {
-
-  color: #fff;
-
-  color: white;
-
-  font-size: 70px;
+color: #fff;
+   font-size: 70px;
   margin-top: -100px;
   padding: 10px;
-  text-shadow: 
+  text-shadow:
       0 0 10px rgba(255, 255, 255, 0.9), /* Bright white shadow for a glow effect */
       0 0 20px rgba(255, 255, 255, 0.7), /* Bright white shadow for a glow effect */
       0 0 30px rgba(255, 255, 255, 0.5); /* Bright white shadow for a glow effect */
@@ -36,7 +30,6 @@ video {
     letter-spacing: 2px; /* Add letter spacing for a more stylish look */
     transition: text-shadow 0.3s ease-in-out; /* Add transition for a smooth effect */
 }
-
 .hero-container > p {
   margin-top: 8px;
   color: #fff;
@@ -44,60 +37,47 @@ video {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
     'Lucida Sans', Arial, sans-serif;
 }
-
 .copy-container {
   margin: 0px 200px;
   width: 50%
 }
-
 .copy-container > p {
-  padding: 0px 200px;
+  padding: 0px 20px;
   text-align: center;
   color: #fff;
-
-  font-size: 25px;
-
   font-size: 20px;
-
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
     'Lucida Sans', Arial, sans-serif;
 }
-
 .hero-btns {
   margin-top: 32px;
 }
-
 .hero-btns .btn {
   margin: 6px;
 }
-
 .fa-play-circle {
   margin-left: 4px;
 }
-
 @media screen and (max-width: 960px) {
   .hero-container > h1 {
     font-size: 60px;
     margin-top: -150px;
   }
 }
-
 @media screen and (max-width: 768px) {
   .hero-container > h1 {
     font-size: 50px;
     margin-top: -100px;
   }
-
   .hero-container > p {
     font-size: 30px;
   }
-
   .btn-mobile {
     display: block;
     text-decoration: none;
   }
-
   .btn {
     width: 100%;
   }
 }
+

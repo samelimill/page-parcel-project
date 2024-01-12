@@ -7,12 +7,17 @@ function CardItem(props) {
   function showSub(){
     if (Auth.loggedIn()) {
       return (
-      <Link to={props.path}><button className='cards__item__btn'>Subscribe</button></Link>
+        <Link to={props.path} target='_blank' rel='noopener noreferrer'>
+          <button
+            className='cards__item__btn'
+            onClick={() => props.onClick(props.label, props.path)}
+          >Subscribe</button>
+      </Link>
       )} else {
         return;
       }
     };
-
+    
   return (
     <>
       <li className='cards__item'>

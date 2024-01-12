@@ -18,7 +18,10 @@
     },
     "dependencies": {
         "@apollo/client": "^3.8.9",
+        "@stripe/react-stripe-js": "^2.4.0",
+        "@stripe/stripe-js": "^2.3.0",
         "cors": "^2.8.5",
+        "dayjs": "^1.11.10",
         "dotenv": "^16.3.1",
         "graphql": "^16.8.1",
         "jwt-decode": "^4.0.0",

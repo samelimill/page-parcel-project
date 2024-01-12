@@ -1,6 +1,6 @@
 import React from 'react';
 import UserCard from './UserCard';
-import './about.css'
+import './About.css'
 import '../../App.css'
 
 
