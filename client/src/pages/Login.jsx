@@ -32,7 +32,7 @@ function Login(props) {
   return (
     <div className="container my-1">
        <video src="/assets/videos/pexels_videos_2421545 (2160p).mp4" autoPlay loop muted />
-      <Link to="/signup">← Go to Signup</Link>
+      <Link to="/signup" style={{ color: 'white' }}>← Go to Signup</Link>
 
       <h2>Login</h2>
       <form onSubmit={handleFormSubmit}>
@@ -58,10 +58,10 @@ function Login(props) {
         </div>
         {error ? (
           <div>
-            <p className="error-text">The provided credentials are incorrect</p>
+            <p className="error-text" style={{ color: 'white' }}>The provided credentials are incorrect</p>
           </div>
         ) : null}
-        <div className="flex-row flex-end">
+        <div className="flex-row flex-end" style={{ marginTop: '10px' }}>
           <button type="submit">Submit</button>
         </div>
       </form>
