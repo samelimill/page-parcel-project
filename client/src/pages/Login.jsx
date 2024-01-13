@@ -13,7 +13,14 @@ function Login(props) {
     try {
       const mutationResponse = await login({
         variables: { email: formState.email, password: formState.password },
+
       });
+      console.log(mutationResponse.data.login.user.firstName)
+      let userInfo = {
+        Name: `${mutationResponse.data.login.user.firstName} ${mutationResponse.data.login.user.lastName}`, 
+        Email: mutationResponse.data.login.user.email,
+      } 
+      localStorage.setItem("userInfo", JSON.stringify(userInfo));
       const token = mutationResponse.data.login.token;
       Auth.login(token);
     } catch (e) {

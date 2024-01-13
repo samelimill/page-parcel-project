@@ -14,7 +14,9 @@ function AccountPage() {
   return (
     <>
       <div>
-        <Link to="/">← Back to Products</Link>
+      <Link to="/" style={{ textDecoration: 'none', color: 'black', fontSize: '20px' }}>
+        ← Back to Products
+      </Link>
         <Account />
         {/* {user ? (
           <>
