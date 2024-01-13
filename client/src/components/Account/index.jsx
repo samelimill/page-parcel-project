@@ -7,7 +7,8 @@ import dayjs from 'dayjs';
 const Account = () => {
   // State to store order history
   const [orderHistory, setOrderHistory] = useState([]);
-
+  let userInfo = JSON.parse(localStorage.getItem("userInfo")) || ""
+  console.log(userInfo)
   // imports the current day
   const date = dayjs().format('MM/DD/YYYY');
 
@@ -72,8 +73,14 @@ const Account = () => {
   return (
     <div className="orderContainer">
       <video src="/assets/videos/pexels_videos_2421545 (2160p).mp4" autoPlay loop muted />
-      <h2 className="about">ORDER HISTORY</h2>
-
+      
+      <div className="custom-container">
+  <h1 className="custom-heading">PROFILE</h1>
+  <h3 className="custom-heading">USER: {userInfo.Name}</h3>
+  <h3 className="custom-heading">EMAIL: {userInfo.Email}</h3>
+  
+</div>
+<h2 className="about">ORDER HISTORY</h2>
       <div className="order-history">
         {Object.keys(mockOrderHistory).map((packageName) => (
           <div key={packageName}>
