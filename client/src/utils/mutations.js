@@ -48,3 +48,18 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const UPDATE_PASSWORD = gql`
+  mutation updatePassword(
+    $id: ID!
+    $password: String!
+    ) {
+    updatePassword(
+      _id: $id
+      password: $password
+    ) {
+      _id
+      password
+    }
+  }
+`;
