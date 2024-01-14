@@ -15,7 +15,7 @@ const About = () => {
   return (
     <div className="aboutContainer">
     <video src="/assets/videos/pexels_videos_2421545 (2160p).mp4" autoPlay loop muted />
-      <h2 className="about">About Us</h2>
+      <h2 className="about">ABOUT US</h2>
       <div className="user-grid">
         {users.map((user, index) => (
           <UserCard key={index} {...user} />

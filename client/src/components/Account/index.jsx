@@ -7,7 +7,8 @@ import dayjs from 'dayjs';
 const Account = () => {
   // State to store order history
   const [orderHistory, setOrderHistory] = useState([]);
-
+  let userInfo = JSON.parse(localStorage.getItem("userInfo")) || ""
+  console.log(userInfo)
   // imports the current day
   const date = dayjs().format('MM/DD/YYYY');
 
@@ -68,12 +69,16 @@ const Account = () => {
     // For demonstration purposes, let's say you want to initially display the order history for 'Romance Package'
     setOrderHistory(mockOrderHistory || []);
   }, []); // Empty dependency array ensures the effect runs only once when the component mounts
-
   return (
     <div className="orderContainer">
       <video src="/assets/videos/pexels_videos_2421545 (2160p).mp4" autoPlay loop muted />
-      <h2 className="about">ORDER HISTORY</h2>
-
+      
+  <h2 className="about">PROFILE</h2>
+  <div className='order-history'>
+  <h3>Name: {userInfo.Name}</h3>
+  <h3>Email: {userInfo.Email}</h3>
+</div>
+<h2 className="about">ORDER HISTORY</h2>
       <div className="order-history">
         {Object.keys(mockOrderHistory).map((packageName) => (
           <div key={packageName}>

@@ -117,7 +117,7 @@ function Navbar() {
                 className='nav-links'
                 onClick={closeMobileMenu}
               >
-                About us
+                About Us
               </Link>
             </li>
             {showNavigation()}
