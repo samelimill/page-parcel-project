@@ -69,16 +69,14 @@ const Account = () => {
     // For demonstration purposes, let's say you want to initially display the order history for 'Romance Package'
     setOrderHistory(mockOrderHistory || []);
   }, []); // Empty dependency array ensures the effect runs only once when the component mounts
-
   return (
     <div className="orderContainer">
       <video src="/assets/videos/pexels_videos_2421545 (2160p).mp4" autoPlay loop muted />
       
-      <div className="custom-container">
-  <h1 className="custom-heading">PROFILE</h1>
-  <h3 className="custom-heading">USER: {userInfo.Name}</h3>
-  <h3 className="custom-heading">EMAIL: {userInfo.Email}</h3>
-  
+  <h2 className="about">PROFILE</h2>
+  <div className='order-history'>
+  <h3>Name: {userInfo.Name}</h3>
+  <h3>Email: {userInfo.Email}</h3>
 </div>
 <h2 className="about">ORDER HISTORY</h2>
       <div className="order-history">

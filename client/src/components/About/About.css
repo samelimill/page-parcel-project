@@ -35,6 +35,7 @@ video {
     font-weight: bold;
     letter-spacing: 2px;
     transition: text-shadow 0.3s ease-in-out;
+    padding-top: 10px;
   }
 
   /* Center the form vertically and horizontally */
