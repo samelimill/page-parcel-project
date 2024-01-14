@@ -22,8 +22,6 @@ function contact() {
     
 
     return (
-      <section>
-        
         <div className="container">
         <video src="/assets/videos/pexels_videos_2421545 (2160p).mp4" autoPlay loop muted />
           <h2 className="--text-center">CONTACT US</h2>
@@ -38,7 +36,6 @@ function contact() {
           </form>
           
         </div>
-      </section>
     )
   }
   
