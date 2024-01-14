@@ -19,8 +19,10 @@ const Signup = () => {
     if (email && password) {
       try {
         // Call the addUser mutation to add the user data to the database
-        await addUser({
+        
+        await addUser({ 
           variables: { firstName, lastName, email, password },
+
         });
 
         // Successful signup logic

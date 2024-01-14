@@ -24,6 +24,19 @@ video {
     flex-direction: column;
 }
 
+
+.custom-container {
+  text-align: center;
+  color: white;
+  width: 350px; /* Optional: Set a specific width for the container */
+  margin: 3px auto 18px; /* Center the container horizontally */
+  border: 5px solid white; /* Add a border with a cool blue color */
+  border-radius: 10px; /* Optional: Add border-radius for rounded corners */
+  padding: 25px; /* Optional: Add padding for space inside the container */
+  background-color: black;
+}
+
+
 .order-history {
     justify-content: center;
     padding: 20px;
