@@ -41,6 +41,15 @@ userSchema.methods.isCorrectPassword = async function (password) {
   return await bcrypt.compare(password, this.password);
 };
 
+userSchema.pre("findOneAndUpdate", async function (next) {
+  if (this._update.password) {
+    const saltRounds = 10;
+    this._update.password = await bcrypt.hash(this._update.password, saltRounds);
+  }
+  next();
+});
+
 const User = mongoose.model("User", userSchema);
 
 module.exports = User;
+

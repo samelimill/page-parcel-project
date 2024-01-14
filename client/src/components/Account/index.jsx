@@ -3,19 +3,21 @@ import './index.css';
 import '../../App.css';
 import OrderHistory from './OrderHistory';
 import dayjs from 'dayjs';
+import PasswordUpdateForm from './PasswordUpdateForm';
 
 const Account = () => {
   // State to store order history
   const [orderHistory, setOrderHistory] = useState([]);
   let userInfo = JSON.parse(localStorage.getItem("userInfo")) || ""
-  console.log(userInfo)
+  // console.log(userInfo)
   // imports the current day
   const date = dayjs().format('MM/DD/YYYY');
 
+  // array of package names if they are located in local storage
   const packageNames = [ localStorage.getItem('package_Romance'), localStorage.getItem('package_Non-Fiction'), localStorage.getItem('package_Fiction'), localStorage.getItem('package_Fantasy'), localStorage.getItem('package_Mystery')];
 
-  // Mock data for order history (replace with actual fetching logic)
   // place date into order history to make sure it keeps correct days
+  // if the package name is located in local storage
   const mockOrderHistory = {
     ...(packageNames[0] === 'Romance' && {
       'Romance Subscription': [
@@ -66,7 +68,6 @@ const Account = () => {
 
   // Effect to set orderHistory when the component mounts
   useEffect(() => {
-    // For demonstration purposes, let's say you want to initially display the order history for 'Romance Package'
     setOrderHistory(mockOrderHistory || []);
   }, []); // Empty dependency array ensures the effect runs only once when the component mounts
   return (
@@ -88,6 +89,9 @@ const Account = () => {
             ))}
           </div>
         ))}
+      </div>
+      <div className="password-reset">
+      <PasswordUpdateForm />
       </div>
     </div>
   );

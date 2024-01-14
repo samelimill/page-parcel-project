@@ -132,6 +132,16 @@ const resolvers = {
 
       throw AuthenticationError;
     },
+
+    updatePassword: async (parent, { _id, password }) => {
+      const updatedUser = await User.findByIdAndUpdate(
+        _id,
+        { password },
+        { new: true }
+      );
+        console.log(updatedUser);
+      return updatedUser;
+    },
     updateProduct: async (parent, { _id, quantity }) => {
       const decrement = Math.abs(quantity) * -1;
 
