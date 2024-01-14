@@ -70,28 +70,40 @@ const Account = () => {
   useEffect(() => {
     setOrderHistory(mockOrderHistory || []);
   }, []); // Empty dependency array ensures the effect runs only once when the component mounts
+  
   return (
     <div className="orderContainer">
       <video src="/assets/videos/pexels_videos_2421545 (2160p).mp4" autoPlay loop muted />
-      
+
+      <div className="user-info">
   <h2 className="about">PROFILE</h2>
-  <div className='order-history'>
-  <h3>Name: {userInfo.Name}</h3>
-  <h3>Email: {userInfo.Email}</h3>
-</div>
-<h2 className="about">ORDER HISTORY</h2>
-      <div className="order-history">
-        {Object.keys(mockOrderHistory).map((packageName) => (
-          <div key={packageName}>
-            <h3>{packageName}</h3>
-            {mockOrderHistory[packageName].map((order, index) => (
-              <OrderHistory key={index} {...order} />
-            ))}
-          </div>
-        ))}
+  <div className="order-history">
+    <div>
+      <h3>Name: </h3>
+      <p className="user-info-item"> {userInfo.Name}</p>
+    </div>
+    <div>
+      <h3>Email:</h3>
+      <p className="user-info-item"> {userInfo.Email}</p>
+    </div>
+  </div>
+        <div className="password-reset">
+          <PasswordUpdateForm />
+        </div>
       </div>
-      <div className="password-reset">
-      <PasswordUpdateForm />
+
+      <div className="order-history-column">
+        <h2 className="about">ORDER HISTORY</h2>
+        <div className="order-history">
+          {Object.keys(mockOrderHistory).map((packageName) => (
+            <div key={packageName}>
+              <h3 className='package-name'>{packageName}</h3>
+              {mockOrderHistory[packageName].map((order, index) => (
+                <OrderHistory key={index} {...order} />
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

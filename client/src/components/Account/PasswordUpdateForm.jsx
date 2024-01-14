@@ -47,25 +47,29 @@ const UpdatePasswordForm = () => {
 
   return (
     <div>
-      <h2>UPDATE PASSWORD</h2>
+      <h2 className='about'>UPDATE PASSWORD</h2>
       {successMessage && <p>{successMessage}</p>}
       {error && <p style={{ color: 'red' }}>{error}</p>}
-      <form onSubmit={handleUpdatePassword}>
+      <form className="password-form" onSubmit={handleUpdatePassword}>
         <br />
         <label>
           <input
+            className='pw-field'
             type="password"
             value={newPassword}
             placeholder="New Password"
+            style={{ width: '80%' }}
             onChange={(event) => setNewPassword(event.target.value)}
           />
         </label>
         <br />
         <label>
           <input
+            className='pw-field'
             type="password"
             value={confirmPassword}
             placeholder="Confirm Password"
+            style={{ width: '80%' }}
             onChange={(event) => setConfirmPassword(event.target.value)}
           />
         </label>
