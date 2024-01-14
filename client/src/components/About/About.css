@@ -55,6 +55,7 @@ video {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
+  
 }
 
 .user-card {
@@ -67,7 +68,7 @@ video {
 
 .user-card img {
   width: 100%;
-  max-width: 150px;
+  max-width: 200px;
   border-radius: 50%;
   margin-bottom: 10px;
 }

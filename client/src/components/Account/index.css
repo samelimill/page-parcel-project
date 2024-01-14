@@ -24,12 +24,42 @@ video {
   flex-direction: column;
 }
 
+button{
+  margin: 10px;
+}
+
+.password-form {
+  margin: auto;
+  text-align: center;
+}
+
+.user-info h3 {
+  display: inline-block;
+}
+
+.user-info h3::after {
+  content: "\00a0";
+}
+
+.user-info-item {
+  display: inline-block;
+}
+
+.pw-field {
+  width: 80%;
+  margin: 10px auto;
+}
+
+.package-name {
+  text-align: center;
+}
+
 .password-reset {
-display: flex;
-justify-content: center;
-align-items: center;
-padding-top: 30px;
-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 30px;
+  color: black;
 }
 
 .order-history {
@@ -41,7 +71,17 @@ color: black;
   opacity: 50%;
   width: fit-content;
   margin: auto;
-  margin-top: 50px;
+  margin-top: 10px;
+}
+
+.user-info {
+  width: 50%;
+  float: left;
+}
+
+.order-history-column {
+  width: 50%;
+  float: right;
 }
 
 /* Responsive adjustments */
