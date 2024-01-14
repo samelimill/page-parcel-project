@@ -1,6 +1,6 @@
 # Page Parcel
 
-Looking for your next read? We've got you covered! Our application targets those that are looking for a journey through the pages. Whether the subscriber is an sporadic or avid reader, there's a book that will meet their needs.
+Looking for your next read? We've got you covered! Our application targets those that are looking for a journey through the pages. Whether the subscriber is an avid or sporadic reader, there's a book that will meet their needs.
 
 # Table of Contents
 
