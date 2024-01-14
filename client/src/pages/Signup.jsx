@@ -1,7 +1,7 @@
-import { useMutation } from '@apollo/client';
-import { ADD_USER } from '../utils/mutations';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useMutation } from "@apollo/client";
+import { ADD_USER } from "../utils/mutations";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Signup = () => {
   const [error, setError] = useState(false); // Define the 'error' state variable
@@ -19,16 +19,15 @@ const Signup = () => {
     if (email && password) {
       try {
         // Call the addUser mutation to add the user data to the database
-        
-        await addUser({ 
-          variables: { firstName, lastName, email, password },
 
+        await addUser({
+          variables: { firstName, lastName, email, password },
         });
 
         // Successful signup logic
-        console.log('Signup successful!');
+        console.log("Signup successful!");
       } catch (error) {
-        console.error('Error signing up:', error);
+        console.error("Error signing up:", error);
       }
     } else {
       // Set the error state to true if signup fails due to missing email or password
@@ -36,12 +35,17 @@ const Signup = () => {
     }
   };
 
-  // Rest of the code...
-
   return (
     <div className="container my-1">
-       <video src="/assets/videos/pexels_videos_2421545 (2160p).mp4" autoPlay loop muted />
-      <Link to="/login" style={{ color: 'white' }}>← Go to Login</Link>
+      <video
+        src="/assets/videos/pexels_videos_2421545 (2160p).mp4"
+        autoPlay
+        loop
+        muted
+      />
+      <Link to="/login" style={{ color: "white" }}>
+        ← Go to Login
+      </Link>
       <h2>Signup</h2>
       <form onSubmit={handleSignup}>
         <div className="flex-row space-between my-2">
@@ -55,12 +59,7 @@ const Signup = () => {
         </div>
         <div className="flex-row space-between my-2">
           <label htmlFor="lastName">Last Name:</label>
-          <input
-            placeholder="Last"
-            name="lastName"
-            type="text"
-            id="lastName"
-          />
+          <input placeholder="Last" name="lastName" type="text" id="lastName" />
         </div>
         <div className="flex-row space-between my-2">
           <label htmlFor="email">Email:</label>
