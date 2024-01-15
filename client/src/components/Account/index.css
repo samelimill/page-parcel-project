@@ -86,8 +86,9 @@ button{
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .container {
-    max-width: 100%;
-    padding: 0 20px;
+  .user-info,
+  .order-history-column {
+    width: 100%;
+    float: none;
   }
 }
