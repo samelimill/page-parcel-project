@@ -38,10 +38,12 @@ const OrderHistory = ({ date, packageName, status }) => {
 
   return (
     <div className="order-history-card">
+      <div className="order-box">
       <p>Date Purchased: {date}</p>
       <p>Package: {packageName}</p>
       {isSubscriptionCancelled && <p>Subscription Cancelled</p>}
       <p>Status: {isSubscriptionCancelled ? 'Inactive' : orderStatus}</p>
+      
 
       {/* Add Cancel Subscription button */}
       {!isSubscriptionCancelled && (
@@ -52,6 +54,7 @@ const OrderHistory = ({ date, packageName, status }) => {
       {isSubscriptionCancelled && (
         <button onClick={handleReactivateSubscription}>Reactivate Subscription</button>
       )}
+    </div>
     </div>
   );
 };

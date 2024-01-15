@@ -5,7 +5,18 @@ video {
   position: fixed;
   z-index: -1;
 }
+ .order-box{
+  color: black;
+  border: 10px solid #ccc;
+  border-radius: 7px;
+  
+ }
 
+ .package-name{
+  color: black;
+  font-size: 1.4em;
+ }
+ 
 /* Additional styles for a card-like appearance */
 .order-history-card {
   /* box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);  */
