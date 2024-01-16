@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './index.css';
 import '../../App.css';
 import OrderHistory from './OrderHistory';
-import dayjs from 'dayjs';
+import DayJS from 'react-dayjs';
 import PasswordUpdateForm from './PasswordUpdateForm';
 
 const Account = () => {
@@ -11,7 +11,7 @@ const Account = () => {
   let userInfo = JSON.parse(localStorage.getItem("userInfo")) || ""
   // console.log(userInfo)
   // imports the current day
-  const date = dayjs().format('MM/DD/YYYY');
+  const date = DayJS().format('MM/DD/YYYY');
 
   // array of package names if they are located in local storage
   const packageNames = [ localStorage.getItem('package_Romance'), localStorage.getItem('package_Non-Fiction'), localStorage.getItem('package_Fiction'), localStorage.getItem('package_Fantasy'), localStorage.getItem('package_Mystery')];
