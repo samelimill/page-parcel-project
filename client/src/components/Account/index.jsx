@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './index.css';
 import '../../App.css';
 import OrderHistory from './OrderHistory';
-import DayJS from 'react-dayjs';
+import DayJS from 'dayjs';
 import PasswordUpdateForm from './PasswordUpdateForm';
 
 const Account = () => {

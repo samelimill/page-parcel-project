@@ -25,7 +25,8 @@
     "react-loaders": "^3.0.1",
     "react-router-dom": "^6.21.2",
     "react-spinners": "^0.13.8",
-    "vitest": "^0.32.0"
+    "vitest": "^0.32.0",
+    "react-dayjs": "^1.11.10"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
