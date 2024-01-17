@@ -1,25 +1,31 @@
+// Importing React and necessary components/styles
 import React from 'react';
 import './Cards.css';
 import CardItem from './CardItem';
 
+// Functional component for displaying a collection of cards
 function Cards() {
-  const handleCardItemClick = (label, path) => {
-    // Store the selected label and path in localStorage
-    const uniquePackage = `package_${label}`
+  // Function to handle the click event on a card item
+  const handleCardItemClick = (label) => {
+    // Store the selected label in localStorage
+    const uniquePackage = `package_${label}`;
     localStorage.setItem(uniquePackage, label);
   };
+
+  // Rendering the Cards component
   return (
     <div className='cards'>
       <h1>CHECK OUT OUR COLLECTION!</h1>
       <div className='cards__container'>
         <div className='cards__wrapper'>
+          {/* First row of cards */}
           <ul className='cards__items'>
             <CardItem
               src='/assets/images/booksbed.jpg'
               text='Discover a love that defies time, where every glance speaks volumes and every touch ignites a spark - your next romantic escape awaits.'
               label='Romance'
               path='https://buy.stripe.com/test_9AQ3fX7BNgjMecw003'
-              onClick={() => handleCardItemClick('Romance',)}
+              onClick={() => handleCardItemClick('Romance')}
             />
             <CardItem
               src='/assets/images/spiral.jpg'
@@ -29,6 +35,7 @@ function Cards() {
               onClick={() => handleCardItemClick('Non-Fiction')}
             />
           </ul>
+          {/* Second row of cards */}
           <ul className='cards__items'>
             <CardItem
               src='/assets/images/fiction.jpg'
@@ -58,4 +65,5 @@ function Cards() {
   );
 }
 
+// Exporting the Cards component as the default export
 export default Cards;
