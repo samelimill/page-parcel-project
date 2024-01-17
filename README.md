@@ -26,6 +26,7 @@ Our application provides the user with 5 different genres to subscribe to: Roman
 ## Deployed Application
 
 ![Application](client/public/assets/images/application.png)
+[Page Parcel Deployed](!https://pageparcelbooks.onrender.com/)
 
 ## Collaborators
 
