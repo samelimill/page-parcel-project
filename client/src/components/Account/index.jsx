@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
-import "./index.css";
-import "../../App.css";
-import OrderHistory from "./OrderHistory";
-import dayjs from "dayjs";
-import PasswordUpdateForm from "./PasswordUpdateForm";
+
+import React, { useState, useEffect } from 'react';
+import './index.css';
+import '../../App.css';
+import OrderHistory from './OrderHistory';
+import DayJS from 'dayjs';
+import PasswordUpdateForm from './PasswordUpdateForm';
 
 const Account = () => {
   // State to store order history
@@ -11,7 +12,7 @@ const Account = () => {
   let userInfo = JSON.parse(localStorage.getItem("userInfo")) || "";
   // console.log(userInfo)
   // imports the current day
-  const date = dayjs().format("MM/DD/YYYY");
+  const date = DayJS().format('MM/DD/YYYY');
 
   // array of package names if they are located in local storage
   const packageNames = [
