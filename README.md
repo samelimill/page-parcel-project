@@ -16,27 +16,27 @@ Our application provides the user with 5 different genres to subscribe to: Roman
 
 ## Tech Used
 
-- [Stripe API](!https://stripe.com/docs/js)
-- [React](!https://react.dev/)
-- [Apollo GraphQL](!https://www.apollographql.com/docs/apollo-server/v2/testing/graphql-playground/)
-- [MongoDB](!https://www.mongodb.com/)
-- [Node.js](!https://nodejs.org/en)
-- [Render](!https://render.com/)
+- [Stripe API](https://stripe.com/docs/js)
+- [React](https://react.dev/)
+- [Apollo GraphQL](https://www.apollographql.com/docs/apollo-server/v2/testing/graphql-playground/)
+- [MongoDB](https://www.mongodb.com/)
+- [Node.js](https://nodejs.org/en)
+- [Render](https://render.com/)
 
 ## Deployed Application
 
 ![Application](client/public/assets/images/application.png)
-[Page Parcel Deployed](!https://pageparcelbooks.onrender.com/)
+[Page Parcel Deployed](https://pageparcelbooks.onrender.com/)
 
 ## Collaborators
 
-[Cody S.](!https://github.com/Rounderr21)
+[Cody S.](https://github.com/Rounderr21)
 
-[Sam M.](!https://github.com/samelimill)
+[Sam M.](https://github.com/samelimill)
 
-[Heather N.](!https://github.com/viaheather)
+[Heather N.](https://github.com/viaheather)
 
-[Hugo (Jr) S.](!https://github.com/Hsolojr)
+[Hugo (Jr) S.](https://github.com/Hsolojr)
 
 ## License
 
