@@ -27,51 +27,6 @@ const resolvers = {
     product: async (parent, { _id }) => {
       return await Product.findById(_id).populate("products");
     },
-
-    // orders: async (parent, args, context) => {
-    //   if (context.user) {
-    //     const user = await User.findById(context.user._id).populate({
-    //       path: "orders.products",
-    //     });
-
-    //     user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
-
-    //     return user;
-    //   }
-
-    //   throw AuthenticationError;
-    // },
-
-    // checkout: async (parent, args, context) => {
-    //   const url = new URL(context.headers.referer).origin;
-
-    //   await Order.create({ products: args.products.map(({ _id }) => _id) });
-    //   const line_items = [];
-
-    //   for (const product of args.products) {
-    //     line_items.push({
-    //       price_data: {
-    //         currency: "usd",
-    //         product_data: {
-    //           name: product.name,
-    //           description: product.description,
-    //         },
-    //         unit_amount: product.price * 100,
-    //       },
-    //       quantity: product.purchaseQuantity,
-    //     });
-    //   }
-
-    //     const session = await stripe.checkout.sessions.create({
-    //       payment_method_types: ["card"],
-    //       line_items,
-    //       mode: "payment",
-    //       success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
-    //       cancel_url: `${url}/`,
-    //     });
-
-    //     return { session: session.id };
-    //   },
   },
 
   Mutation: {

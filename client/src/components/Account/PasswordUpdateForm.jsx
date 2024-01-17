@@ -1,31 +1,30 @@
-import { useState, useEffect } from 'react';
-import { useMutation } from '@apollo/client';
-import { UPDATE_PASSWORD } from '../../utils/mutations';
-import getUserIdFromIdToken from '../../components/Context/UserContext';
+import { useState, useEffect } from "react";
+import { useMutation } from "@apollo/client";
+import { UPDATE_PASSWORD } from "../../utils/mutations";
+import getUserIdFromIdToken from "../../components/Context/UserContext";
 
 const UpdatePasswordForm = () => {
-  const [newPassword, setNewPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [updatePassword] = useMutation(UPDATE_PASSWORD);
-  const [successMessage, setSuccessMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState("");
   const [error, setError] = useState(null);
   const [userId, setUserId] = useState(null);
 
   useEffect(() => {
-    const idToken = localStorage.getItem('id_token');
+    const idToken = localStorage.getItem("id_token");
     //making sure that the token is being pulled from local storage successfully
     // console.log('id_token:', idToken);
-  
+
     if (idToken) {
       const user = getUserIdFromIdToken(idToken);
       //making sure that the user id is being pulled from the token successfully
-    //   console.log('userId:', user);
+      //   console.log('userId:', user);
       setUserId(user);
     } else {
-      console.error('id_token not found in localStorage');
+      console.error("id_token not found in localStorage");
     }
   }, []);
-  
 
   const handleUpdatePassword = async (event) => {
     event.preventDefault();
@@ -33,43 +32,43 @@ const UpdatePasswordForm = () => {
     if (newPassword === confirmPassword) {
       try {
         await updatePassword({
-        variables: { id: userId, password: newPassword }
+          variables: { id: userId, password: newPassword },
         });
-        setSuccessMessage('Password Has Been Updated!');
+        setSuccessMessage("Password Has Been Updated!");
       } catch (error) {
         console.error(error);
-        setError('Error updating password: ' + error.message);
+        setError("Error updating password: " + error.message);
       }
     } else {
-      setError('New password and confirm password do not match.');
+      setError("New password and confirm password do not match.");
     }
   };
 
   return (
     <div>
-      <h2 className='about'>UPDATE PASSWORD</h2>
+      <h2 className="about">UPDATE PASSWORD</h2>
       {successMessage && <p>{successMessage}</p>}
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && <p style={{ color: "red" }}>{error}</p>}
       <form className="password-form" onSubmit={handleUpdatePassword}>
         <br />
         <label>
           <input
-            className='pw-field'
+            className="pw-field"
             type="password"
             value={newPassword}
             placeholder="New Password"
-            style={{ width: '80%' }}
+            style={{ width: "80%" }}
             onChange={(event) => setNewPassword(event.target.value)}
           />
         </label>
         <br />
         <label>
           <input
-            className='pw-field'
+            className="pw-field"
             type="password"
             value={confirmPassword}
             placeholder="Confirm Password"
-            style={{ width: '80%' }}
+            style={{ width: "80%" }}
             onChange={(event) => setConfirmPassword(event.target.value)}
           />
         </label>
